@@ -138,7 +138,7 @@ public class Mp3SearchEngine{
 			}
 		}
 		reader.close();
-		return Collections.unmodifiableList(list);
+		return list;
 	}
 
 }

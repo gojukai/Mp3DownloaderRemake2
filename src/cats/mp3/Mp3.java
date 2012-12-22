@@ -118,6 +118,22 @@ public class Mp3{
 		return fileName;
 	}
 	
+	public String getName(){
+		return fileName.substring(0, fileName.indexOf(".mp3"));
+	}
+	
+	public double getDoubleSize(){
+		return Double.parseDouble(size.substring(0, size.indexOf(" ")));
+	}
+	
+	public int getDurationAsInt(){
+		return Integer.parseInt(duration.replaceAll(":", ""));
+	}
+	
+	public int getBitrateAsInt(){
+		return Integer.parseInt(bitrate.substring(0, bitrate.indexOf(" ")));
+	}
+	
 	public String toString(){
 		return String.format("Name: %s | Size: %s | Bitrate: %s | Duration: %s | Download: %s", fileName, size, bitrate, duration, downloadLink);
 	}

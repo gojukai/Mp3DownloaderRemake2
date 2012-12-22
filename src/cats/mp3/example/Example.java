@@ -8,6 +8,7 @@ import cats.mp3.Mp3;
 import cats.mp3.Mp3SearchEngine;
 import cats.mp3.event.DownloadEvent;
 import cats.mp3.event.DownloadListener;
+import cats.mp3.util.Mp3Sorter;
 
 public class Example {
 	
@@ -22,14 +23,15 @@ public class Example {
 			}
 
 			public void onFinish(DownloadEvent event){
-				System.out.println("Finished: " + event.isError());
+				System.out.println("Finished: " + event.isSuccessful());
 			}
 			
 		};
 		final Mp3SearchEngine engine = new Mp3SearchEngine(10);
 		engine.addDownloadListener(listener);
 		engine.setDestinationDirectory(new File(System.getProperty("user.home"), "Desktop"));
-		final List<Mp3> mp3s = engine.search("asking alexandria");
+		final List<Mp3> mp3s = engine.search("skillet - comatose");
+		Mp3Sorter.sort(mp3s, Mp3Sorter.BITRATE);
 		final Mp3 first = mp3s.get(0);
 		first.download();
 		engine.shutdown();

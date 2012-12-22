@@ -55,7 +55,7 @@ public class DownloadEvent {
 		return error;
 	}
 	
-	public boolean isSuccessfull(){
+	public boolean isSuccessful(){
 		return !error;
 	}
 
